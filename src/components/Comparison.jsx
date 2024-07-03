@@ -6,7 +6,7 @@ import {
   FaSkull,
 } from "react-icons/fa6";
 import { TbCircleArrowDown, TbCircleArrowUp } from "react-icons/tb";
-import { interactions } from "./interactions";
+import { interactions } from "../interactions";
 import { Modal } from "./Modal";
 import { InteractionInformation } from "./InteractionInformation";
 
@@ -45,7 +45,12 @@ export const Comparison = ({ substances }) => {
   };
 
   return (
-    <div onClick={() => setShowModal(true)}>
+    <div
+     onClick={() => setShowModal(true)}
+     style={{
+      cursor: "pointer",
+     }}
+    >
       <ComparisonIcon substances={substances} />
       {showModal && (
         <Modal closeHandler={closeHandler}>

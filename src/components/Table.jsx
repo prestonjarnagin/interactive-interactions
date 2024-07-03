@@ -1,4 +1,4 @@
-import { Comparison } from "./Comparison";
+import { Comparison } from "./components/Comparison";
 import { interactions } from "./interactions";
 
 export const Table = () => {
