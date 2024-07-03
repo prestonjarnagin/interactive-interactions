@@ -1,5 +1,5 @@
-import { Comparison } from "./components/Comparison";
-import { interactions } from "./interactions";
+import { Comparison } from "./Comparison";
+import { interactions } from "../interactions";
 
 export const Table = () => {
   const substances = Object.keys(interactions);
