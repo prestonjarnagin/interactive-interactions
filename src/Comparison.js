@@ -1,86 +1,9 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { FaEllipsis, FaTriangleExclamation, FaRegCircleXmark, FaSkull } from "react-icons/fa6";
 import { TbCircleArrowDown, TbCircleArrowUp } from "react-icons/tb";
-// import { substanceList } from './substanceList'
-
-const interactionIcons = {
-  alcohol: {
-    caffeine: 'warn',
-    coke: 'unsafe',
-    poppers: 'warn',
-    molly: 'unsafe',
-    GHB: 'deadly',
-    K: 'deadly',
-    acid: 'safeDecrease',
-    shrooms: 'safeDecrease',
-    xanax: 'deadly',
-    viagra: 'warn',
-  },
-  caffeine: {
-    coke: 'warn',
-    poppers: 'warn',
-    molly: 'warn',
-    GHB: 'warn',
-    K: 'warn',
-    acid: 'safeIncrease',
-    shrooms: 'warn',
-    xanax: 'safeDecrease',
-    viagra: 'safeIncrease',
-  },
-  coke: {
-    poppers: 'warn',
-    molly: 'unsafe',
-    GHB: 'unsafe',
-    K: 'unsafe',
-    acid: 'warn',
-    shrooms: 'warn',
-    xanax: 'safeDecrease',
-    viagra: 'deadly',
-  },
-  poppers: {
-    molly: 'warn',
-    GHB: 'deadly',
-    K: 'warn',
-    acid: 'safeIncrease',
-    shrooms: 'safeIncrease',
-    xanax: 'safeIncrease',
-    viagra: 'deadly',
-  },
-  molly: {
-    GHB: 'warn',
-    K: 'warn',
-    acid: 'safeIncrease',
-    shrooms: 'safeIncrease',
-    xanax: 'safeDecrease',
-    viagra: 'warn',
-  },
-  GHB: {
-    K: 'deadly',
-    acid: 'safeDecrease',
-    shrooms: 'safeDecrease',
-    xanax: 'unsafe',
-    viagra: 'unsafe',
-  },
-  K: {
-    acid: 'safeIncrease',
-    shrooms: 'safeIncrease',
-    xanax: 'unsafe',
-    viagra: 'safeDecrease',
-  },
-  acid: {
-        shrooms: 'safeIncrease',
-    xanax: 'safeDecrease',
-    viagra: 'warn',
-  },
-  shrooms: {
-        xanax: 'safeDecrease',
-    viagra: 'unsafe',
-  },
-  xanax: {
-    viagra: 'unsafe',
-  },
-  'viagra': {},
-}
+import { interactions } from './interactions'
+import { Modal } from './Modal'
 
 const icons = {
   warn: <FaTriangleExclamation size={30}/>,
@@ -90,36 +13,44 @@ const icons = {
   safeIncrease: <TbCircleArrowUp color="red" size={30} />,
 }
 
-export const Comparison = ({substances}) => {
-
+const ComparisonIcon = ({substances}) => {
   const sameSubstance = substances[0] === substances[1]
 
-  if (sameSubstance) {
-    return (
-      <div>
-        <FaEllipsis size={30}/>
-      </div>
-    )
-  }
+  return (
+  <>
+    <div
 
-  if (interactionIcons[substances[0]]?.[substances[1]]) {
-      return (
-        <div>
-          {icons[interactionIcons[substances[0]][substances[1]]]}
-        </div>
-      )
-  }
-  if (interactionIcons[substances[1]]?.[substances[0]]) {
-    return (
-      <div>
-        {icons[interactionIcons[substances[1]][substances[0]]]}
-      </div>
-    )
+    >
+      {sameSubstance ? <FaEllipsis size={30}/> : (
+        interactions[substances[0]]?.[substances[1]] ? icons[interactions[substances[0]][substances[1]]] : (
+          interactions[substances[1]]?.[substances[0]] ? icons[interactions[substances[1]][substances[0]]] : null
+        )
+      )}
+
+    </div>
+
+  </>
+  )
+}
+
+export const Comparison = ({substances}) => {
+  const [showModal, setShowModal] = useState(false)
+
+  const closeHandler = (e) => {
+    e.stopPropagation()
+    setShowModal(false)
   }
 
   return (
-    <div>
-      ?
+      <div
+        onClick={() => setShowModal(true)}
+      >
+      <ComparisonIcon substances={substances}/>
+      {showModal && (
+        <Modal closeHandler={closeHandler}>
+          <h1>{substances[0]} and {substances[1]}</h1>
+        </Modal>
+      )}
     </div>
   )
 }
