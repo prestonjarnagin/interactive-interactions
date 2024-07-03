@@ -46,10 +46,10 @@ export const Comparison = ({ substances }) => {
 
   return (
     <div
-     onClick={() => setShowModal(true)}
-     style={{
-      cursor: "pointer",
-     }}
+      onClick={() => setShowModal(true)}
+      style={{
+        cursor: "pointer",
+      }}
     >
       <ComparisonIcon substances={substances} />
       {showModal && (
