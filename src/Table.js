@@ -1,20 +1,9 @@
 import React from 'react';
-import { Comparison } from './Comparison';
+import { Comparison } from './Comparison'
+import { interactions } from './interactions'
 
 export const Table = () => {
-  const substances = [
-    'alcohol',
-    'caffeine',
-    'coke',
-    'poppers',
-    'molly',
-    'GHB',
-    'K',
-    'acid',
-    'shrooms',
-    'xanax',
-    'viagra',
-  ]
+  const substances = Object.keys(interactions)
 
   const tableHead = substances.map((substance, index) => {
     return (
