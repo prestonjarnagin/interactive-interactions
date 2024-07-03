@@ -1,19 +1,20 @@
-export const InteractionInformation = ({substances}) => {
+export const InteractionInformation = ({ substances }) => {
   return (
     <div>
       <h1
         style={{
-          color: 'black',
+          color: "black",
         }}
       >
         {substances[0]} & {substances[1]}
       </h1>
       <p
         style={{
-          color: 'black',
+          color: "black",
         }}
-      >Information about the interaction will go here.</p>
+      >
+        Information about the interaction will go here.
+      </p>
     </div>
-  )
-}
-
+  );
+};
