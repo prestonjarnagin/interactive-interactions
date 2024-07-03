@@ -6,11 +6,11 @@ import { interactions } from './interactions'
 import { Modal } from './Modal'
 
 const icons = {
-  warn: <FaTriangleExclamation size={30}/>,
-  unsafe: <FaRegCircleXmark color="orange" size={30} />,
-  deadly: <FaSkull color="black" size={30} />,
-  safeDecrease: <TbCircleArrowDown color="blue" size={30} />,
-  safeIncrease: <TbCircleArrowUp color="red" size={30} />,
+  warn: <FaTriangleExclamation size={30} color="rgb(235,243,10)"/>,
+  unsafe: <FaRegCircleXmark color="rgb(226,114,54)" size={30} />,
+  deadly: <FaSkull color="FFFFF" size={30} filter='invert'/>,
+  safeDecrease: <TbCircleArrowDown color="rgb(23,169,221)" size={30} />,
+  safeIncrease: <TbCircleArrowUp color="rgb(204,37,114)" size={30} />,
 }
 
 const ComparisonIcon = ({substances}) => {

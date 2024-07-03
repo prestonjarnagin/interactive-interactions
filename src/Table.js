@@ -17,7 +17,13 @@ export const Table = () => {
   ]
 
   const tableHead = substances.map((substance, index) => {
-    return <th key={index}>{substance}</th>
+    return (
+      <th key={index} style={{
+        color: 'white',
+      }}>
+        {substance}
+      </th>
+    )
   })
 
   const tableRows = function () {
@@ -26,13 +32,16 @@ export const Table = () => {
       substances.map((substance, index) => {
         return (
           <tr key={index}>
-            <th>{substance}</th>
+            <th style={{
+              color: 'white',
+            }}>{substance}</th>
 
             {substances.map((headerSubstance, index) => {
               return (
                 <td key={index} style={{
                   width: '3.5em',
                   height: '3.5em',
+                  color: 'white',
                 }}>
                   <Comparison substances={[substance, headerSubstance]} />
                 </td>
@@ -45,7 +54,9 @@ export const Table = () => {
   }
 
   return (
-    <div>
+    <div style={{
+      backgroundColor: 'black',
+    }}>
 
       <table>
         <thead>
