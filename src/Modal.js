@@ -1,6 +1,3 @@
-import React from "react";
-
-// export const Modal = () => {
 export const Modal = ({ children, closeHandler }) => {
   return (
     <div
@@ -13,6 +10,7 @@ export const Modal = ({ children, closeHandler }) => {
         height: "100%" /* Full height */,
         overflow: "auto" /* Enable scroll if needed */,
         backgroundColor: "rgb(0,0,0)" /* Fallback color */,
+        // eslint-disable-next-line no-dupe-keys
         backgroundColor: "rgba(0,0,0,0.6)" /* Black w/ opacity */,
       }}
       onClick={closeHandler}
