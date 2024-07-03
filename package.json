@@ -22,7 +22,8 @@
     "deploy": "gh-pages -d build",
     "format:fix": "prettier . --write --cache",
     "format:fix:force": "prettier . --write",
-    "format:check": "prettier . --check"
+    "format:check": "prettier . --check",
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": [
