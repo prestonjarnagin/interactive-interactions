@@ -4,6 +4,7 @@ import { FaEllipsis, FaTriangleExclamation, FaRegCircleXmark, FaSkull } from "re
 import { TbCircleArrowDown, TbCircleArrowUp } from "react-icons/tb";
 import { interactions } from './interactions'
 import { Modal } from './Modal'
+import { InteractionInformation } from './InteractionInformation'
 
 const icons = {
   warn: <FaTriangleExclamation size={30} color="rgb(235,243,10)"/>,
@@ -48,7 +49,7 @@ export const Comparison = ({substances}) => {
       <ComparisonIcon substances={substances}/>
       {showModal && (
         <Modal closeHandler={closeHandler}>
-          <h1>{substances[0]} and {substances[1]}</h1>
+          <InteractionInformation substances={substances}/>
         </Modal>
       )}
     </div>
